@@ -20,8 +20,7 @@ position = np.abs(distance - 25)*1e-3 # m
 
 # Calculate Quantities
 guagePressure = (data['Trial 1'] + data['Trial 2'] + data['Trial 3'])*133.322/3 # Pa
-absPressure = atmPressure + guagePressure
-density = absPressure/(temp*airGasConst)
+density = atmPressure/(temp*airGasConst)
 velocity = np.sqrt(2*guagePressure/density)
 scaleForce = scaleMass*9.81e-3
 
