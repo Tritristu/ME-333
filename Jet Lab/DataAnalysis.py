@@ -12,7 +12,7 @@ volumeFlowRate = inputPressure*2.5422e-4 #m**3/s
 scaleMass = 2.2 #g
 
 # Reading in data
-data = pd.read_csv('Lab 1 data.csv')
+data = pd.read_csv('Jet Lab\Lab 1 data.csv')
 
 # Positional data
 distance = data['Distance [mm]'] # mm
