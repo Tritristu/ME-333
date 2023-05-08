@@ -18,7 +18,7 @@ trialThree['Area (m^2)'] = (np.pi/4)*(trialThree['Duct Diameter (mm)']*1e-3)**2
 
 # Volume Flow rate Calculations
 avgTime1 = (53+60+59)/3
-avgTime2 = (116+116)/3
+avgTime2 = (116++128116)/3
 avgTime3 = (19.17+18.63+19.09)/3
 
 volFlux1 = 6e-3/avgTime1
@@ -30,7 +30,10 @@ print('Trial 2 Volumetric Flux:',avgTime2)
 print('Trial 3 Average Volumetric Flux:',avgTime3)
 
 # Bernoulli Velocity
-
+trialOne['Bernoulli Velocity (m/s)'] = np.sqrt(2*gravity*(trialOne['Static Head (mm)'][0] - trialOne['Static Head (mm)']))
+trialTwo['Bernoulli Velocity (m/s)'] = np.sqrt(2*gravity*(trialTwo['Static Head (mm)'][0] - trialTwo['Static Head (mm)']))
+trialThree['Bernoulli Max Velocity (m/s)'] = np.sqrt(2*gravity*(trialThree['Static Head Max (mm)'][0] - trialThree['Static Head Max (mm)']))
+trialThree['Bernoulli Min Velocity (m/s)'] = np.sqrt(2*gravity*(trialThree['Static Head Min (mm)'][0] - trialThree['Static Head Min (mm)']))
 
 
 # Mass Conservation velocity
