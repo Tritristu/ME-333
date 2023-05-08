@@ -39,8 +39,8 @@ massFLux2 = density*volFlux2
 massFLux3 = density*volFlux3
 
 trialOne['Mass Conservation Velocity (m/s)'] = massFLux1/(density*trialOne['Area (m^2)'])
-trialTwo['Mass Conservation Velocity (m/s)'] = massFLux1/(density*trialTwo['Area (m^2)'])
-trialThree['Mass Conservation Velocity (m/s)'] = massFLux1/(density*trialThree['Area (m^2)'])
+trialTwo['Mass Conservation Velocity (m/s)'] = massFLux2/(density*trialTwo['Area (m^2)'])
+trialThree['Mass Conservation Velocity (m/s)'] = massFLux3/(density*trialThree['Area (m^2)'])
 
 # Plotting
 
