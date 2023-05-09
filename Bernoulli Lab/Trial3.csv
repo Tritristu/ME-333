@@ -1,4 +1,4 @@
-Duct Distance(mm),Duct Diameter (mm),Static Head Max (mm),Static Head Min (mm),Total Head Max (mm),Total Head Min (mm),Repeat Static Head Max (mm),Repeat Static Head Min (mm)
+Duct Distance (mm),Duct Diameter (mm),Static Head Max (mm),Static Head Min (mm),Total Head Max (mm),Total Head Min (mm),Repeat Static Head Max (mm),Repeat Static Head Min (mm)
 0,25,215,205,215,210,215,210
 60.28,13.9,180,170,212,210,180,175
 68.68,11.8,140,130,215,210,145,135
