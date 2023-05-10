@@ -26,15 +26,14 @@ volFlux1 = 6e-3/avgTime1
 volFlux2 = 6e-3/avgTime2
 volFlux3 = 2e-3/avgTime3
 
-print('Trial 1 Volumetric Flux:',avgTime1)
-print('Trial 2 Volumetric Flux:',avgTime2)
-print('Trial 3 Average Volumetric Flux:',avgTime3)
+print('Trial 1 Volumetric Flux:',volFlux1)
+print('Trial 2 Volumetric Flux:',volFlux2)
+print('Trial 3 Average Volumetric Flux:',volFlux3)
 
 # Bernoulli Velocity
 trialOne['Bernoulli Velocity (m/s)'] = np.sqrt(2e-3*gravity*(trialOne['Static Head (mm)'][0] - trialOne['Static Head (mm)']))
 trialTwo['Bernoulli Velocity (m/s)'] = np.sqrt(2e-3*gravity*(trialTwo['Static Head (mm)'][0] - trialTwo['Static Head (mm)']))
 trialThree['Bernoulli Max Velocity (m/s)'] = np.sqrt(2e-3*gravity*(trialThree['Static Head Max (mm)'][0] - trialThree['Static Head Max (mm)']))
-# trialThree['Bernoulli Min Velocity (m/s)'] = np.sqrt(2e-3*gravity*(trialThree['Static Head Max (mm)'][0] - trialThree['Static Head Min (mm)']))
 trialThree['Bernoulli Min Velocity (m/s)'] = np.sqrt(2e-3*gravity*(trialThree['Static Head Min (mm)'][0] - trialThree['Static Head Min (mm)']))
 
 
@@ -68,7 +67,7 @@ plt.ylim(0,2)
 
 # Trial 2
 plt.figure(3)
-plt.title('Trial 1 Static Head vs Duct Distance')
+plt.title('Trial 2 Static Head vs Duct Distance')
 sns.lineplot(data=trialTwo,x='Duct Distance (mm)',y='Static Head (mm)')
 plt.xlim(0,145)
 plt.ylim(0,200)
