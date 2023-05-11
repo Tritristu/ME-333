@@ -31,10 +31,10 @@ print('Trial 2 Volumetric Flux:',volFlux2)
 print('Trial 3 Average Volumetric Flux:',volFlux3)
 
 # Bernoulli Velocity
-trialOne['Bernoulli Velocity (m/s)'] = np.sqrt(2e-3*gravity*(trialOne['Static Head (mm)'][0] - trialOne['Static Head (mm)']))
-trialTwo['Bernoulli Velocity (m/s)'] = np.sqrt(2e-3*gravity*(trialTwo['Static Head (mm)'][0] - trialTwo['Static Head (mm)']))
-trialThree['Bernoulli Max Velocity (m/s)'] = np.sqrt(2e-3*gravity*(trialThree['Static Head Max (mm)'][0] - trialThree['Static Head Max (mm)']))
-trialThree['Bernoulli Min Velocity (m/s)'] = np.sqrt(2e-3*gravity*(trialThree['Static Head Min (mm)'][0] - trialThree['Static Head Min (mm)']))
+trialOne['Bernoulli Velocity (m/s)'] = np.sqrt(2e-3*gravity*(trialOne['Total Head (mm)'] - trialOne['Static Head (mm)']))
+trialTwo['Bernoulli Velocity (m/s)'] = np.sqrt(2e-3*gravity*(trialTwo['Total Head (mm)'] - trialTwo['Static Head (mm)']))
+trialThree['Bernoulli Max Velocity (m/s)'] = np.sqrt(2e-3*gravity*(trialThree['Total Head Max (mm)'] - trialThree['Static Head Max (mm)']))
+trialThree['Bernoulli Min Velocity (m/s)'] = np.sqrt(2e-3*gravity*(trialThree['Total Head Min (mm)'] - trialThree['Static Head Min (mm)']))
 
 
 # Mass Conservation velocity
@@ -94,8 +94,6 @@ plt.legend()
 plt.figure(6)
 plt.fill_between(x=trialThree['Duct Distance (mm)'], y1=trialThree['Bernoulli Max Velocity (m/s)'], y2=trialThree['Bernoulli Min Velocity (m/s)'], alpha=0.7)
 sns.lineplot(data=trialThree,x='Duct Distance (mm)',y='Mass Conservation Velocity (m/s)',color='orange')
-plt.plot(trialThree['Duct Distance (mm)'],trialThree['Bernoulli Max Velocity (m/s)'],color='blue')
-plt.plot(trialThree['Duct Distance (mm)'],trialThree['Bernoulli Min Velocity (m/s)'],color='blue')
 plt.xlim(0,145)
 plt.ylim(0,1.75)
 plt.title("Trial 3 Velocity vs Duct Distance")
