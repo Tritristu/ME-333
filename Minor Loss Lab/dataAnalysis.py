@@ -23,19 +23,29 @@ cappedTee['Pressure Drop [Pa] (R_e = 15000)'] = 133.322*cappedTee['Pressure Drop
 cappedTee['Pressure Drop [Pa] (R_e = 25000)'] = 133.322*cappedTee['Pressure Drop [Torr] (R_e = 25000)']
 cappedTee['Pressure Drop [Pa] (R_e = 35000)'] = 133.322*cappedTee['Pressure Drop [Torr] (R_e = 35000)']
 
+# Linear Regression
+# def trendline(data):
+#     later problem
+
+
 # Plotting
 sns.set_theme()
 
-
 plt.figure(1)
-plt.title('Round Elbow Pressure change vs Position')
+plt.title('Round Elbow Pressure Change vs Position')
 sns.scatterplot(data=roundElbow,x='Position [m]',y='Pressure Drop [Pa] (R_e = 15000)')
 sns.scatterplot(data=roundElbow,x='Position [m]',y='Pressure Drop [Pa] (R_e = 25000)')
 sns.scatterplot(data=roundElbow,x='Position [m]',y='Pressure Drop [Pa] (R_e = 35000)')
 plt.legend(labels=['R_e=15000','R_e=25000','R_e=35000'],loc='lower right')
-plt.ylabel('Pressure Drop [Pa]')
-# plt.xlim(0,145)
-# plt.ylim(0,250)
+plt.ylabel('Pressure Change [Pa]')
+
+plt.figure(2)
+plt.title('Capped Tee Pressure Change vs Position')
+sns.scatterplot(data=cappedTee,x='Position [m]',y='Pressure Drop [Pa] (R_e = 15000)')
+sns.scatterplot(data=cappedTee,x='Position [m]',y='Pressure Drop [Pa] (R_e = 25000)')
+sns.scatterplot(data=cappedTee,x='Position [m]',y='Pressure Drop [Pa] (R_e = 35000)')
+plt.legend(labels=['R_e=15000','R_e=25000','R_e=35000'],loc='lower right')
+plt.ylabel('Pressure Change [Pa]')
 
 plt.show()
 
