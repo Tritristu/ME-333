@@ -33,7 +33,7 @@ def trendline(data):
     slope1, intercept1, R, P, Err = linregress(positions, reynolds15000)
     slope2, intercept2, R, P, Err = linregress(positions, reynolds25000)
     slope3, intercept3, R, P, Err = linregress(positions, reynolds35000)
-    fitLines = [[slope1,intercept1],[slope2,intercept2],[slope2,intercept2]]
+    fitLines = [[slope1,intercept1],[slope2,intercept2],[slope3,intercept3]]
     return fitLines
 
 roundElbowFits = trendline(roundElbow)
@@ -47,11 +47,10 @@ plt.title('Round Elbow Pressure Change vs Position')
 sns.scatterplot(data=roundElbow,x='Position [m]',y='Pressure Drop [Pa] (R_e = 15000)')
 sns.scatterplot(data=roundElbow,x='Position [m]',y='Pressure Drop [Pa] (R_e = 25000)')
 sns.scatterplot(data=roundElbow,x='Position [m]',y='Pressure Drop [Pa] (R_e = 35000)')
-# for lines in roundElbowFits:
-#     pressureDrops = lines[0]*roundElbow['Position [m]'] + lines[1]
-#     plt.plot(roundElbow['Position [m]'],pressureDrops)
-# plt.legend(labels=['R_e=15000','R_e=25000','R_e=35000','Fitted (R_e=15000)','Fitted (R_e=25000)','Fitted (R_e=35000)'],loc='lower right')
-plt.legend(labels=['R_e=15000','R_e=25000','R_e=35000'],loc='lower right')
+for lines in roundElbowFits:
+    pressureDrops = lines[0]*roundElbow['Position [m]'] + lines[1]
+    plt.plot(roundElbow['Position [m]'],pressureDrops)
+plt.legend(labels=['R_e=15000','R_e=25000','R_e=35000','Fitted (R_e=15000)','Fitted (R_e=25000)','Fitted (R_e=35000)'],loc='lower right')
 plt.ylabel('Pressure Change [Pa]')
 
 plt.figure(2)
@@ -59,7 +58,10 @@ plt.title('Capped Tee Pressure Change vs Position')
 sns.scatterplot(data=cappedTee,x='Position [m]',y='Pressure Drop [Pa] (R_e = 15000)')
 sns.scatterplot(data=cappedTee,x='Position [m]',y='Pressure Drop [Pa] (R_e = 25000)')
 sns.scatterplot(data=cappedTee,x='Position [m]',y='Pressure Drop [Pa] (R_e = 35000)')
-plt.legend(labels=['R_e=15000','R_e=25000','R_e=35000'],loc='lower right')
+for lines in cappedTeeFits:
+    pressureDrops = lines[0]*cappedTee['Position [m]'] + lines[1]
+    plt.plot(cappedTee['Position [m]'],pressureDrops)
+plt.legend(labels=['R_e=15000','R_e=25000','R_e=35000','Fitted (R_e=15000)','Fitted (R_e=25000)','Fitted (R_e=35000)'],loc='lower right')
 plt.ylabel('Pressure Change [Pa]')
 
 plt.show()
