@@ -57,34 +57,41 @@ i=0
 for lines in roundElbowFits:
     roundFrictionFactors = np.concatenate([roundFrictionFactors,[(lines[0] + lines[2])/(density*velocities[i]**2)]])
     i += 1
-avgRoundFrictionFactor = sum(roundFrictionFactors)/3
 
 cappedFrictionFactors = []
 i = 0
 for lines in cappedTeeFits:
     cappedFrictionFactors = np.concatenate([cappedFrictionFactors,[(lines[0] + lines[2])/(density*velocities[i]**2)]])
     i += 1
-avgCappedFrictionFactor = sum(roundFrictionFactors)/3
+
 
 # Calculate surface roughness
-roundSurfaceRoughness = roundFrictionFactors*pipeDiameter
-avgRoundSurfaceRoughness = avgRoundFrictionFactor*pipeDiameter
 
-cappedSurfaceRoughness = cappedFrictionFactors*pipeDiameter
-avgCappedSurfaceRoughness = avgCappedFrictionFactor*pipeDiameter
+# Calculate Pressure drops
+i = 0
+roundPressureDrops = []
+for lines in roundElbowFits:
+    roundPressureDrops = np.concatenate([roundPressureDrops,[lines[1]-lines[3]]])
+    i += 1
+
+i = 0
+cappedPressureDrops = []
+for lines in cappedTeeFits:
+    cappedPressureDrops = np.concatenate([cappedPressureDrops,[lines[1]-lines[3]]])
+    i += 1
 
 # Calculate minor loss factor
 roundMinorFactors = []
 i = 0
 for lines in roundElbowFits:
-    roundMinorFactors = np.concatenate([roundMinorFactors,[2*(lines[1]-lines[3])/(density*velocities[i]**2)]])
+    roundMinorFactors = np.concatenate([roundMinorFactors,[2*roundPressureDrops[i]/(density*velocities[i]**2)]])
     i += 1
 avgRoundMinorFactor = sum(roundMinorFactors)/3
 
 cappedMinorFactors = []
 i = 0
 for lines in cappedTeeFits:
-    cappedMinorFactors = np.concatenate([cappedMinorFactors,[2*(lines[1]-lines[3])/(density*velocities[i]**2)]])
+    cappedMinorFactors = np.concatenate([cappedMinorFactors,[2*cappedPressureDrops[i]/(density*velocities[i]**2)]])
     i += 1
 avgCappedMinorFactor = sum(cappedMinorFactors)/3
 
