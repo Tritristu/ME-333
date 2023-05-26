@@ -66,14 +66,10 @@ for lines in cappedTeeFits:
 
 
 # Calculate surface roughness
-roundRelativeRoughness = [[0,0,0],[0,0,0],[0,0,0]]
-cappedRelativeRoughness = [[0,0,0],[0,0,0],[0,0,0]]
+relativeRoughness = [0.0019,.0040,.0010]
+roughness = [roughness*pipeDiameter for roughness in relativeRoughness]
 
-roundRoughness = [[roughness*pipeDiameter for roughness in trial] for trial in roundRelativeRoughness]
-cappedRoughness = [[roughness*pipeDiameter for roughness in trial] for trial in cappedRelativeRoughness]
-
-avgRoundRougness = [sum(roughness)/3 for roughness in roundRoughness]
-avgCappedRougness = [sum(roughness)/3 for roughness in cappedRoughness]
+avgRoundRougness = sum(roughness)/3
 
 # Calculate Pressure drops
 roundPressureDrops = [(lines[1]-lines[3]) for lines in roundElbowFits]
