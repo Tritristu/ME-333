@@ -71,33 +71,13 @@ cappedRelativeRoughness = [[0,0,0],[0,0,0],[0,0,0]]
 
 roundRoughness = [[roughness*pipeDiameter for roughness in trial] for trial in roundRelativeRoughness]
 cappedRoughness = [[roughness*pipeDiameter for roughness in trial] for trial in cappedRelativeRoughness]
-# roundRoughness = []
-# i = 0
-# for roughness in roundRelativeRoughness:
-#     roundRoughness = np.concatenate([roundRoughness,[roughness*pipeDiameter]]) 
-#     i += 1
-
-# cappedRoughness = []
-# i = 0
-# for roughness in cappedRelativeRoughness:
-#     cappedRoughness = np.concatenate([cappedRoughness,[roughness*pipeDiameter]]) 
-#     i += 1
 
 avgRoundRougness = [sum(roughness)/3 for roughness in roundRoughness]
 avgCappedRougness = [sum(roughness)/3 for roughness in cappedRoughness]
 
 # Calculate Pressure drops
-i = 0
-roundPressureDrops = []
-for lines in roundElbowFits:
-    roundPressureDrops = np.concatenate([roundPressureDrops,[lines[1]-lines[3]]])
-    i += 1
-
-i = 0
-cappedPressureDrops = []
-for lines in cappedTeeFits:
-    cappedPressureDrops = np.concatenate([cappedPressureDrops,[lines[1]-lines[3]]])
-    i += 1
+roundPressureDrops = [(lines[1]-lines[3]) for lines in roundElbowFits]
+cappedPressureDrops = [(lines[1]-lines[3]) for lines in cappedTeeFits]
 
 # Calculate minor loss factor
 roundMinorFactors = []
@@ -139,4 +119,4 @@ for lines in cappedTeeFits:
 plt.legend(labels=['R_e=15000','R_e=25000','R_e=35000','LoB (R_e=15000)','LoB (R_e=25000)','LoB (R_e=35000)'],loc='lower right')
 plt.ylabel('Pressure Change [Pa]')
 
-plt.show()
+# plt.show()
