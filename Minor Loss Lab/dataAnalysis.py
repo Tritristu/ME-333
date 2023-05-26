@@ -55,17 +55,36 @@ cappedTeeFits = trendline(cappedTee)
 roundFrictionFactors = []
 i=0
 for lines in roundElbowFits:
-    roundFrictionFactors = np.concatenate([roundFrictionFactors,[(lines[0] + lines[2])/(density*velocities[i]**2)]])
+    roundFrictionFactors = np.concatenate([roundFrictionFactors,[2*(lines[0] + lines[2])*pipeDiameter/(density*velocities[i]**2)]])
     i += 1
 
 cappedFrictionFactors = []
 i = 0
 for lines in cappedTeeFits:
-    cappedFrictionFactors = np.concatenate([cappedFrictionFactors,[(lines[0] + lines[2])/(density*velocities[i]**2)]])
+    cappedFrictionFactors = np.concatenate([cappedFrictionFactors,[2*(lines[0] + lines[2])*pipeDiameter/(density*velocities[i]**2)]])
     i += 1
 
 
 # Calculate surface roughness
+roundRelativeRoughness = [[0,0,0],[0,0,0],[0,0,0]]
+cappedRelativeRoughness = [[0,0,0],[0,0,0],[0,0,0]]
+
+roundRoughness = [[roughness*pipeDiameter for roughness in trial] for trial in roundRelativeRoughness]
+cappedRoughness = [[roughness*pipeDiameter for roughness in trial] for trial in cappedRelativeRoughness]
+# roundRoughness = []
+# i = 0
+# for roughness in roundRelativeRoughness:
+#     roundRoughness = np.concatenate([roundRoughness,[roughness*pipeDiameter]]) 
+#     i += 1
+
+# cappedRoughness = []
+# i = 0
+# for roughness in cappedRelativeRoughness:
+#     cappedRoughness = np.concatenate([cappedRoughness,[roughness*pipeDiameter]]) 
+#     i += 1
+
+avgRoundRougness = [sum(roughness)/3 for roughness in roundRoughness]
+avgCappedRougness = [sum(roughness)/3 for roughness in cappedRoughness]
 
 # Calculate Pressure drops
 i = 0
@@ -120,4 +139,4 @@ for lines in cappedTeeFits:
 plt.legend(labels=['R_e=15000','R_e=25000','R_e=35000','LoB (R_e=15000)','LoB (R_e=25000)','LoB (R_e=35000)'],loc='lower right')
 plt.ylabel('Pressure Change [Pa]')
 
-# plt.show()
+plt.show()
